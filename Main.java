@@ -55,9 +55,10 @@ public class Main extends Canvas implements Runnable {
 		//
 		this.parser = new Parser(this.mouse);
 		AffineTransform af = new AffineTransform();
-		af.translate(64, 64);
+		af.translate(128, 128);
 		af.rotate(0.785398);
-		this.particles = this.parser.textToParticle("Shellamy!!!", 2.5f, new Font("Gorgia", Font.ITALIC, 80), af, frame.getGraphics());
+		af.scale(2, 2);
+		this.particles = this.parser.textToParticle("Emily <3", 4f, new Font("Gorgia", Font.PLAIN, 80), af, frame.getGraphics());
 	}
 	
 	@Override

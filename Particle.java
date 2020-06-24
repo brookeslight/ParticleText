@@ -10,7 +10,7 @@ public class Particle {
 	private float x;
 	private float y;
 	private float r;
-	private final float attractionConstant = 0.75f; 
+	private final float attractionConstant = 1.75f; 
 	private final float repultionConstant = 3.75f;
 	private final float mouseRadius = 80;
 	private Mouse mouse;
@@ -28,13 +28,16 @@ public class Particle {
 	public void tick() {
 		//net force
 		Vector netForce = new Vector(0, 0);
-		this.color = Color.cyan;
+		this.color = Color.blue;
 		//vector towards target
 		Vector attraction = new Vector(this.tx - this.x, this.ty - this.y);
 		if(attraction.length() > attractionConstant) {
 			attraction.setMagnitude(attractionConstant);
 			netForce.add(attraction);
-			this.color = Color.blue;
+		} else if(attraction.length() != 0) {
+			netForce.add(attraction);
+		} else {
+			this.color = Color.cyan;
 		}
 
 		//vector away from mouse
