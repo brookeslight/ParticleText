@@ -10,9 +10,9 @@ public class Particle {
 	private float x;
 	private float y;
 	private float r;
-	private final float attractionConstant = 1.75f; 
-	private final float repultionConstant = 3.75f;
-	private final float mouseRadius = 80;
+	private final float attractionConstant = 2.75f; 
+	private final float repultionConstant = 5.25f;
+	private final float mouseRadius = 128;
 	private Mouse mouse;
 	private Color color;
 
@@ -31,22 +31,20 @@ public class Particle {
 		this.color = Color.blue;
 		//vector towards target
 		Vector attraction = new Vector(this.tx - this.x, this.ty - this.y);
-		if(attraction.length() > attractionConstant) {
-			attraction.setMagnitude(attractionConstant);
-			netForce.add(attraction);
-		} else if(attraction.length() != 0) {
+		if(attraction.length() != 0) {
+			if(attraction.length() > attractionConstant) {
+				attraction.setMagnitude(attractionConstant);
+			}
 			netForce.add(attraction);
 		} else {
 			this.color = Color.cyan;
 		}
-
 		//vector away from mouse
 		if(Math.hypot(this.x - this.mouse.x, this.y - this.mouse.y) <= mouseRadius) {
 			Vector repultion = new Vector(this.x - this.mouse.x, this.y - this.mouse.y);
 			repultion.setMagnitude(repultionConstant);
 			netForce.add(repultion);
 		}
-
 		this.x += netForce.x;
 		this.y += netForce.y;
 	}

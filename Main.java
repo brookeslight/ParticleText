@@ -58,7 +58,7 @@ public class Main extends Canvas implements Runnable {
 		af.translate(128, 128);
 		af.rotate(0.785398);
 		af.scale(2, 2);
-		this.particles = this.parser.textToParticle("Emily <3", 4f, new Font("Gorgia", Font.PLAIN, 80), af, frame.getGraphics());
+		this.particles = this.parser.textToParticle("Hey Man", 3f, new Font("Georgia", Font.PLAIN, 80), af, frame.getGraphics()); //r size between 2-4 is best
 	}
 	
 	@Override
